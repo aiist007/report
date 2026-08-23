@@ -117,6 +117,29 @@
     border-top:1px solid var(--line);padding-top:28px;letter-spacing:0.02em;
   }
 
+  /* 徽章行 */
+  .badge-row{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+  .badge{display:inline-block;padding:5px 12px;background:var(--card);border-radius:999px;font-size:13px;color:var(--text);border:1px solid var(--line)}
+  .badge.hl{background:var(--accent);color:#fff;border-color:var(--accent)}
+
+  /* 元信息 */
+  .meta{display:flex;flex-wrap:wrap;gap:8px 18px;margin:18px 0;font-size:14px;color:var(--muted)}
+  .meta span{white-space:nowrap}
+
+  /* 提示框 */
+  .callout{margin:24px 0;padding:20px 24px;border-radius:var(--radius);font-size:16px;line-height:1.65;letter-spacing:-0.005em}
+  .callout.warn{background:#FFF5F5;border-left:3px solid var(--up)}
+  .callout.green{background:#F2FFF4;border-left:3px solid var(--down)}
+  .callout.blue{background:#F0F7FF;border-left:3px solid var(--accent)}
+  .callout .tag{display:inline-block;font-weight:700;margin-right:8px;font-size:14px;letter-spacing:0.04em;text-transform:uppercase}
+  .callout.warn .tag{color:var(--up)}
+  .callout.green .tag{color:var(--down)}
+  .callout.blue .tag{color:var(--accent)}
+  .callout p{margin:0}
+  .callout code,.callout b{font-weight:600}
+
+  code{font-family:"SF Mono","Menlo",Consolas,monospace;font-size:14px;background:var(--card);padding:2px 7px;border-radius:5px}
+
   @media(max-width:640px){
     h1{font-size:38px}
     h2{font-size:24px}
@@ -128,7 +151,7 @@
 <body>
 <div class="topbar"><a href="https://blog.aii.st/">← 全部报告</a></div>
 <div class="wrap">
-
+<div class="wrap">
 <h1>为什么小微（微信AI）会员付费是微信未来商业化的重要节点</h1>
 <br>
 <blockquote><p>研究时间：2026-08-19 13:00 CST  </p></blockquote>
@@ -333,7 +356,7 @@
 <p>**免责声明：** 本文为前瞻性分析，并非腾讯官方消息。小微会员付费的具体方案、定价、上线时间均以腾讯官方公告为准。文中收入模型为基于公开数据的推演估算，不构成投资建议。</p>
 
 <footer>Minis 报告发布 · <a href="https://blog.aii.st/" style="color:var(--accent)">blog.aii.st</a></footer>
-
+</div>
 </div>
 </body>
 </html>
