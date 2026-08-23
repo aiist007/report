@@ -5,21 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Minis 报告发布</title>
 <style>
-  :root{--bg:#FFFFFF;--card:#F5F5F7;--text:#1D1D1F;--muted:#86868B;--line:#D2D2D7;--accent:#007AFF}
+  :root{--bg:#FFFFFF;--card:#F5F5F7;--text:#1D1D1F;--muted:#86868B;--line:#D2D2D7;--accent:#007AFF;--safe-top:env(safe-area-inset-top,0)}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue",Helvetica,Arial,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
-  .wrap{max-width:680px;margin:0 auto;padding:64px 24px 96px}
-  .brand{text-align:center;margin-bottom:56px}
+  html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
+  body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue","PingFang SC","Hiragino Sans GB","Microsoft YaHei","Source Han Sans SC","STHeiti",sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:680px;margin:0 auto;padding:calc(var(--safe-top) + 40px) 20px 80px}
+  .brand{text-align:center;margin-bottom:48px}
   .brand .tag{display:inline-block;padding:5px 14px;border:1px solid var(--accent);color:var(--accent);border-radius:999px;font-size:12px;letter-spacing:2px;margin-bottom:18px}
-  .brand h1{font-size:30px;font-weight:700;letter-spacing:-0.02em}
+  .brand h1{font-size:clamp(26px,6vw,30px);font-weight:700;letter-spacing:-0.02em}
   .brand p{color:var(--muted);font-size:14px;margin-top:10px}
-  .card{display:block;text-decoration:none;color:var(--text);margin:14px 0;border-radius:16px;border:1px solid var(--line);background:var(--card);transition:all .2s}
+  .card{display:block;text-decoration:none;color:var(--text);margin:14px 0;border-radius:16px;border:1px solid var(--line);background:var(--card);transition:all .2s;-webkit-tap-highlight-color:transparent}
+  .card:active{opacity:.7}
   .card:hover{border-color:var(--accent);transform:translateY(-2px)}
   .card-body{display:flex;align-items:center;gap:16px;padding:20px 22px}
   .arrow{font-size:20px;color:var(--accent);flex-shrink:0}
   .info .t{font-size:17px;font-weight:600;letter-spacing:-0.01em}
   .info .date{font-size:12px;color:var(--muted)}
-  footer{margin-top:60px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:0.02em}
+  footer{margin-top:56px;text-align:center;color:var(--muted);font-size:12px;letter-spacing:0.02em}
+  @media(max-width:480px){.wrap{padding:24px 16px 64px}.brand{margin-bottom:36px}.card-body{padding:16px 18px}.info .t{font-size:16px}}
 </style>
 </head>
 <body>
