@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>30 岁健身女性一周食谱（四国料理版）</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+    background: #f5f0eb; color: #3d3226; line-height: 1.7; padding: 20px 12px 60px;
+  }
+  .hero {
+    text-align: center; padding: 40px 16px 30px;
+    background: linear-gradient(135deg, #fce4cc, #f6c98e, #d4a5a5);
+    border-radius: 24px; color: #fff; margin-bottom: 32px;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+  }
+  .hero h1 { font-size: clamp(26px, 6.5vw, 42px); font-weight: 800; margin-bottom: 8px; }
+  .hero .sub { font-size: 15px; opacity: 0.9; }
+  .hero .stats { display: flex; justify-content: center; gap: 24px; margin-top: 16px; flex-wrap: wrap; }
+  .hero .stat { text-align: center; }
+  .hero .stat .num { font-size: 22px; font-weight: 800; }
+  .hero .stat .label { font-size: 12px; opacity: 0.8; }
+
+  .section-title {
+    font-size: clamp(20px, 5vw, 28px); font-weight: 800; color: #5a3d2b;
+    margin: 36px 0 18px; display: flex; align-items: center; gap: 10px;
+  }
+  .section-title::before { content: ""; width: 6px; height: 24px; border-radius: 3px; background: linear-gradient(135deg, #d4a5a5, #c471f5); flex-shrink: 0; }
+
+  .warn-box {
+    background: #fff8f0; border-radius: 12px; padding: 14px 16px; margin-top: 12px;
+    border-left: 4px solid #ffb347; font-size: 13px; color: #8b7355; line-height: 1.7;
+  }
+  .warn-box strong { color: #e65100; }
+
+  .day-card {
+    background: #fff; border-radius: 18px; padding: 22px; margin-bottom: 18px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04); border: 1px solid #ede4dd;
+  }
+  .day-header { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; padding-bottom: 14px; border-bottom: 2px solid #f0e6de; flex-wrap: wrap; }
+  .day-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0; }
+  .day-title { font-size: 20px; font-weight: 800; color: #5a3d2b; }
+  .day-meta { margin-left: auto; text-align: right; flex-shrink: 0; }
+  .day-meta .kcal { font-size: 18px; font-weight: 800; color: #ff6b6b; }
+  .day-meta .prot { font-size: 12px; color: #a89880; }
+  .cuisine-tag { font-size: 11px; padding: 2px 8px; border-radius: 6px; font-weight: 600; }
+
+  .food-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 12px; }
+  .food-table th { text-align: left; padding: 6px 8px; font-size: 10px; text-transform: uppercase; letter-spacing: 0.5px; color: #a89880; font-weight: 600; border-bottom: 1px solid #f0e6de; }
+  .food-table td { padding: 6px 8px; border-bottom: 1px solid #f8f2ec; color: #5a3d2b; }
+  .food-table .cat { font-weight: 600; color: #c471f5; white-space: nowrap; }
+  .food-table .name { font-weight: 600; }
+  .food-table .kcal-cell { text-align: right; color: #ff6b6b; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+  .summary-table { width: 100%; border-collapse: collapse; font-size: 14px; background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.04); margin: 24px 0; }
+  .summary-table th { background: linear-gradient(135deg, #d4a5a5, #c471f5); color: #fff; padding: 12px 10px; font-weight: 600; font-size: 13px; }
+  .summary-table td { padding: 12px 10px; text-align: center; border-bottom: 1px solid #f0e6de; color: #5a3d2b; font-variant-numeric: tabular-nums; }
+  .summary-table tr:last-child td { border-bottom: none; font-weight: 800; background: #fff8f0; }
+  .summary-table tr:nth-child(even) td { background: #fffaf5; }
+
+  .advice-section { margin: 36px 0; }
+  .advice-card {
+    background: #fff; border-radius: 14px; padding: 18px; margin-bottom: 12px;
+    box-shadow: 0 1px 8px rgba(0,0,0,0.03); border-left: 4px solid #c471f5;
+  }
+  .advice-card .rank { font-size: 12px; font-weight: 700; color: #c471f5; margin-bottom: 4px; }
+  .advice-card p { font-size: 14px; color: #5a3d2b; line-height: 1.7; }
+
+  .cuisine-guide { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin: 24px 0; }
+  .cuisine-card { border-radius: 14px; padding: 18px; background: #fff; box-shadow: 0 1px 8px rgba(0,0,0,0.03); }
+  .cuisine-card h4 { font-size: 16px; margin-bottom: 8px; }
+  .cuisine-card .tag { display: inline-block; font-size: 10px; padding: 2px 8px; border-radius: 6px; font-weight: 600; margin-bottom: 8px; }
+  .cuisine-card ul { list-style: none; font-size: 12px; color: #5a3d2b; line-height: 1.9; }
+  .cuisine-card ul li::before { content: "· "; font-weight: bold; }
+
+  footer { text-align: center; margin-top: 64px; padding-top: 24px; color: #a89880; font-size: 12px; border-top: 1px solid #e8d5d5; }
+
+  @media (max-width: 480px) {
+    .hero { padding: 28px 14px 22px; }
+    .hero h1 { font-size: 24px; }
+    .day-card { padding: 16px; }
+    .day-meta { margin-left: 0; margin-top: 8px; }
+    .food-table { font-size: 12px; }
+    .cuisine-guide { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>30 岁健身女性一周食谱</h1>
+  <div class="sub">170cm · 120 斤 · 塑形维持 · 日式 · 泰式 · 港式 · 淮扬</div>
+  <div class="stats">
+    <div class="stat"><div class="num">1283</div><div class="label">日均热量 kcal</div></div>
+    <div class="stat"><div class="num">86g</div><div class="label">日均蛋白</div></div>
+    <div class="stat"><div class="num">40+</div><div class="label">食材种类</div></div>
+  </div>
+</div>
+
+<!-- 核心矛盾 -->
+<div class="section-title">核心矛盾</div>
+<div class="warn-box">
+  <strong>⚠️ 蛋白质缺口是最大挑战。</strong>健身塑形每日需 90-110g 蛋白，但你拒绝了鸡蛋、牛奶、牛肉三大蛋白源。仅靠豆腐/虾/鸡胸/猪肉难以达标。<br><br>
+  <strong>💡 解决方案（按优先级）：</strong><br>
+  ① <strong>分离乳清蛋白粉</strong>（乳糖 &lt;0.1g/份，无味冲水或加豆浆）→ 25g/勺<br>
+  ② <strong>豆腐/豆干/豆皮/腐竹</strong>每日 150-200g → 15-25g<br>
+  ③ <strong>鸡胸肉切小丁</strong>煮软烂 → 31g/100g<br>
+  ④ <strong>虾仁</strong>每周 3 次 → 20g/100g<br>
+  ⑤ <strong>龙利鱼/鲈鱼/鲳鱼/黄花鱼</strong> → 18-20g/100g<br>
+  ⑥ <strong>猪里脊</strong>（切薄片煮汤或炖）→ 20g/100g
+</div>
+
+<!-- 四国料理指南 -->
+<div class="section-title">四国料理 × 你的约束</div>
+<div class="cuisine-guide">
+  <div class="cuisine-card">
+    <span class="tag" style="background:#fce4cc;color:#8b6914;">日式</span>
+    <h4>🇯🇵 和风</h4>
+    <ul>
+      <li>味噌豆腐汤（无蛋版）</li>
+      <li>日式蒸乌冬（豆腐蔬菜）</li>
+      <li>黄瓜寿司卷（无蛋）</li>
+      <li>日式涮涮锅（猪肉蔬菜）</li>
+      <li>抹茶布丁（无蛋版）</li>
+      <li>日式蒸包（猪肉白菜）</li>
+    </ul>
+  </div>
+  <div class="cuisine-card">
+    <span class="tag" style="background:#d0f0c0;color:#2f6b3a;">泰式</span>
+    <h4>🇹🇭 暹罗</h4>
+    <ul>
+      <li>泰式炒河粉（无辣版）</li>
+      <li>椰汁糯米饭配芒果</li>
+      <li>泰式蒸鱼（无辣版）</li>
+      <li>椰汁糕</li>
+      <li>泰式猪肉碎炒芥蓝</li>
+      <li>香茅冬瓜汤</li>
+    </ul>
+  </div>
+  <div class="cuisine-card">
+    <span class="tag" style="background:#c4e4f0;color:#1a5a7a;">港式</span>
+    <h4>🇭🇰 粤韵</h4>
+    <ul>
+      <li>虾饺 / 烧卖</li>
+      <li>云吞面（虾仁猪肉）</li>
+      <li>肠粉（虾仁）</li>
+      <li>白粥配油条</li>
+      <li>芒果西米露</li>
+      <li>菠萝包</li>
+      <li>叉烧包</li>
+    </ul>
+  </div>
+  <div class="cuisine-card">
+    <span class="tag" style="background:#e8d5f0;color:#6b2f8b;">淮扬</span>
+    <h4>🍜 维扬</h4>
+    <ul>
+      <li>清蒸鲈鱼 / 鲳鱼</li>
+      <li>狮子头（猪肉）</li>
+      <li>大煮干丝</li>
+      <li>小笼包</li>
+      <li>翡翠烧麦</li>
+      <li>莲子百合汤</li>
+      <li>红烧肉（猪肉）</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 一周食谱 -->
+<div class="section-title">一周食谱</div>
+
+<!-- 周一 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#fce4cc,#f6c98e);">🇯🇵</div>
+    <div><div class="day-title">周一 · 日式和风豆腐宴</div></div>
+    <div class="day-meta"><div class="kcal">~1178</div><div class="prot">蛋白 ~72g</div></div>
+  </div>
+  <table class="food-table">
+    <tr><th>餐次</th><th>食物</th><th>份量</th><th style="text-align:right">热量</th><th style="text-align:right">蛋白</th></tr>
+    <tr><td class="cat">早餐</td><td class="name">日式蒸包（猪肉白菜）+ 味噌豆腐汤</td><td>1个+250ml</td><td class="kcal-cell">300</td><td class="kcal-cell">14g</td></tr>
+    <tr><td class="cat">上午加</td><td class="name">黄瓜条</td><td>1根 100g</td><td class="kcal-cell">16</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">午餐</td><td class="name">日式蒸乌冬 + 豆腐蔬菜汤</td><td>面80g+豆腐100g</td><td class="kcal-cell">420</td><td class="kcal-cell">24g</td></tr>
+    <tr><td class="cat">下午加</td><td class="name">西瓜</td><td>200g</td><td class="kcal-cell">72</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">晚餐</td><td class="name">日式涮涮锅（猪肉片+蔬菜）+ 米饭</td><td>猪里脊60g+蔬菜200g</td><td class="kcal-cell">320</td><td class="kcal-cell">28g</td></tr>
+    <tr><td class="cat">睡前加</td><td class="name">无乳糖酸奶</td><td>100ml</td><td class="kcal-cell">50</td><td class="kcal-cell">5g</td></tr>
+  </table>
+</div>
+
+<!-- 周二 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#d0f0c0,#a8e6a0);">🇭🇰</div>
+    <div><div class="day-title">周二 · 港式点心日</div></div>
+    <div class="day-meta"><div class="kcal">~1218</div><div class="prot">蛋白 ~63g ⚠️</div></div>
+  </div>
+  <table class="food-table">
+    <tr><th>餐次</th><th>食物</th><th>份量</th><th style="text-align:right">热量</th><th style="text-align:right">蛋白</th></tr>
+    <tr><td class="cat">早餐</td><td class="name">虾饺 2 只 + 烧卖 1 只 + 白粥</td><td>虾仁30g+猪肉20g</td><td class="kcal-cell">320</td><td class="kcal-cell">16g</td></tr>
+    <tr><td class="cat">上午加</td><td class="name">黄瓜</td><td>1根</td><td class="kcal-cell">16</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">午餐</td><td class="name">云吞面（虾仁猪肉）+ 蒜蓉炒菜心</td><td>虾仁40g+猪肉30g</td><td class="kcal-cell">440</td><td class="kcal-cell">26g</td></tr>
+    <tr><td class="cat">下午加</td><td class="name">西瓜</td><td>200g</td><td class="kcal-cell">72</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">晚餐</td><td class="name">叉烧包 + 烫生菜 + 芒果西米露</td><td>猪肉30g</td><td class="kcal-cell">320</td><td class="kcal-cell">15g</td></tr>
+    <tr><td class="cat">睡前加</td><td class="name">蛋白粉</td><td>1勺</td><td class="kcal-cell">100</td><td class="kcal-cell">25g</td></tr>
+  </table>
+  <div class="warn-box">⚠️ 今日蛋白仅 ~63g，建议加一勺蛋白粉。</div>
+</div>
+
+<!-- 周三 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#e8d5f0,#d4b8f0);">🍜</div>
+    <div><div class="day-title">周三 · 淮扬经典日</div></div>
+    <div class="day-meta"><div class="kcal">~1211</div><div class="prot">蛋白 ~91g ✅</div></div>
+  </div>
+  <table class="food-table">
+    <tr><th>餐次</th><th>食物</th><th>份量</th><th style="text-align:right">热量</th><th style="text-align:right">蛋白</th></tr>
+    <tr><td class="cat">早餐</td><td class="name">翡翠烧麦 + 原味豆浆</td><td>2个+250ml</td><td class="kcal-cell">300</td><td class="kcal-cell">13g</td></tr>
+    <tr><td class="cat">上午加</td><td class="name">黄瓜</td><td>1根</td><td class="kcal-cell">16</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">午餐</td><td class="name">大煮干丝 + 清蒸鲈鱼 + 米饭</td><td>鱼100g+干丝80g</td><td class="kcal-cell">420</td><td class="kcal-cell">30g</td></tr>
+    <tr><td class="cat">下午加</td><td class="name">芒果</td><td>150g</td><td class="kcal-cell">75</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">晚餐</td><td class="name">小笼包 + 莲子百合汤</td><td>猪肉40g</td><td class="kcal-cell">300</td><td class="kcal-cell">22g</td></tr>
+    <tr><td class="cat">睡前加</td><td class="name">蛋白粉</td><td>1勺</td><td class="kcal-cell">100</td><td class="kcal-cell">25g</td></tr>
+  </table>
+</div>
+
+<!-- 周四 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#fff3cd,#f6e0a0);">🇹🇭</div>
+    <div><div class="day-title">周四 · 泰式无辣日</div></div>
+    <div class="day-meta"><div class="kcal">~1198</div><div class="prot">蛋白 ~87g ⚠️</div></div>
+  </div>
+  <table class="food-table">
+    <tr><th>餐次</th><th>食物</th><th>份量</th><th style="text-align:right">热量</th><th style="text-align:right">蛋白</th></tr>
+    <tr><td class="cat">早餐</td><td class="name">椰汁糯米饭 + 芒果</td><td>糯米50g+芒果150g</td><td class="kcal-cell">330</td><td class="kcal-cell">10g</td></tr>
+    <tr><td class="cat">上午加</td><td class="name">黄瓜</td><td>1根</td><td class="kcal-cell">16</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">午餐</td><td class="name">泰式炒河粉（无辣）+ 香茅冬瓜汤</td><td>鸡胸80g+面80g</td><td class="kcal-cell">400</td><td class="kcal-cell">26g</td></tr>
+    <tr><td class="cat">下午加</td><td class="name">西瓜</td><td>200g</td><td class="kcal-cell">72</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">晚餐</td><td class="name">泰式蒸鱼（无辣）+ 椰汁糕 + 米饭</td><td>鲳鱼100g</td><td class="kcal-cell">280</td><td class="kcal-cell">24g</td></tr>
+    <tr><td class="cat">睡前加</td><td class="name">蛋白粉</td><td>1勺</td><td class="kcal-cell">100</td><td class="kcal-cell">25g</td></tr>
+  </table>
+</div>
+
+<!-- 周五 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#c4e4f0,#9ed8e8);">🇭🇰</div>
+    <div><div class="day-title">周五 · 港式粉面日</div></div>
+    <div class="day-meta"><div class="kcal">~1198</div><div class="prot">蛋白 ~86g ⚠️</div></div>
+  </div>
+  <table class="food-table">
+    <tr><th>餐次</th><th>食物</th><th>份量</th><th style="text-align:right">热量</th><th style="text-align:right">蛋白</th></tr>
+    <tr><td class="cat">早餐</td><td class="name">菠萝包 + 核桃花生豆浆</td><td>1个+250ml</td><td class="kcal-cell">300</td><td class="kcal-cell">12g</td></tr>
+    <tr><td class="cat">上午加</td><td class="name">黄瓜</td><td>1根</td><td class="kcal-cell">16</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">午餐</td><td class="name">虾仁肠粉 + 炒时蔬 + 芒果西米露</td><td>虾仁60g</td><td class="kcal-cell">430</td><td class="kcal-cell">26g</td></tr>
+    <tr><td class="cat">下午加</td><td class="name">西瓜</td><td>200g</td><td class="kcal-cell">72</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">晚餐</td><td class="name">叉烧饭 + 烫菜心</td><td>猪肉50g</td><td class="kcal-cell">280</td><td class="kcal-cell">22g</td></tr>
+    <tr><td class="cat">睡前加</td><td class="name">蛋白粉</td><td>1勺</td><td class="kcal-cell">100</td><td class="kcal-cell">25g</td></tr>
+  </table>
+</div>
+
+<!-- 周六 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#fce4cc,#f6c98e);">🇯🇵</div>
+    <div><div class="day-title">周六 · 日式放纵日 🍰</div></div>
+    <div class="day-meta"><div class="kcal">~1428</div><div class="prot">蛋白 ~95g ✅</div></div>
+  </div>
+  <table class="food-table">
+    <tr><th>餐次</th><th>食物</th><th>份量</th><th style="text-align:right">热量</th><th style="text-align:right">蛋白</th></tr>
+    <tr><td class="cat">早餐</td><td class="name">日式蒸包 + 味噌汤</td><td>1个+250ml</td><td class="kcal-cell">300</td><td class="kcal-cell">14g</td></tr>
+    <tr><td class="cat">上午加</td><td class="name">黄瓜 + 🍰 抹茶慕斯</td><td>1根+1小块</td><td class="kcal-cell">16+180</td><td class="kcal-cell">1+3</td></tr>
+    <tr><td class="cat">午餐</td><td class="name">日式寿喜烧（猪肉版）+ 米饭</td><td>猪里脊80g+蔬菜200g</td><td class="kcal-cell">380</td><td class="kcal-cell">28g</td></tr>
+    <tr><td class="cat">下午加</td><td class="name">西瓜</td><td>200g</td><td class="kcal-cell">72</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">晚餐</td><td class="name">天妇罗（蔬菜）+ 乌冬面</td><td>蔬菜150g+面60g</td><td class="kcal-cell">320</td><td class="kcal-cell">18g</td></tr>
+    <tr><td class="cat">睡前加</td><td class="name">蛋白粉</td><td>1勺</td><td class="kcal-cell">100</td><td class="kcal-cell">25g</td></tr>
+  </table>
+  <div class="warn-box">🍰 甜品安排在上午 10 点或下午 3 点，每次 1 小块（~180 kcal）。周六可安排放纵餐。</div>
+</div>
+
+<!-- 周日 -->
+<div class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#e8d5f0,#d4b8f0);">🍜</div>
+    <div><div class="day-title">周日 · 淮扬轻食日</div></div>
+    <div class="day-meta"><div class="kcal">~1328</div><div class="prot">蛋白 ~98g ✅</div></div>
+  </div>
+  <table class="food-table">
+    <tr><th>餐次</th><th>食物</th><th>份量</th><th style="text-align:right">热量</th><th style="text-align:right">蛋白</th></tr>
+    <tr><td class="cat">早餐</td><td class="name">小笼包 + 豆浆 + 香蕉</td><td>4个+250ml+1根</td><td class="kcal-cell">380</td><td class="kcal-cell">16g</td></tr>
+    <tr><td class="cat">上午加</td><td class="name">黄瓜</td><td>1根</td><td class="kcal-cell">16</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">午餐</td><td class="name">红烧肉（猪肉）+ 蒜蓉西兰花 + 米饭</td><td>猪五花80g</td><td class="kcal-cell">420</td><td class="kcal-cell">24g</td></tr>
+    <tr><td class="cat">下午加</td><td class="name">西瓜</td><td>200g</td><td class="kcal-cell">72</td><td class="kcal-cell">1g</td></tr>
+    <tr><td class="cat">晚餐</td><td class="name">清蒸黄花鱼 + 炒水芹 + 馒头</td><td>鱼100g</td><td class="kcal-cell">340</td><td class="kcal-cell">25g</td></tr>
+    <tr><td class="cat">睡前加</td><td class="name">蛋白粉</td><td>1勺</td><td class="kcal-cell">100</td><td class="kcal-cell">25g</td></tr>
+  </table>
+</div>
+
+<!-- 汇总 -->
+<div class="section-title">一周汇总</div>
+<table class="summary-table">
+  <tr><th>日期</th><th>菜系</th><th>热量 kcal</th><th>蛋白 g</th><th>主题</th></tr>
+  <tr><td>周一</td><td>🇯🇵 日式</td><td>~1178</td><td>~72</td><td>和风豆腐宴</td></tr>
+  <tr><td>周二</td><td>🇭🇰 港式</td><td>~1218</td><td>~63 ⚠️</td><td>点心日</td></tr>
+  <tr><td>周三</td><td>🍜 淮扬</td><td>~1211</td><td>~91 ✅</td><td>经典日</td></tr>
+  <tr><td>周四</td><td>🇹🇭 泰式</td><td>~1198</td><td>~87 ⚠️</td><td>无辣日</td></tr>
+  <tr><td>周五</td><td>🇭🇰 港式</td><td>~1198</td><td>~86 ⚠️</td><td>粉面日</td></tr>
+  <tr><td>周六</td><td>🇯🇵 日式</td><td>~1428</td><td>~95 ✅</td><td>🍰 放纵日</td></tr>
+  <tr><td>周日</td><td>🍜 淮扬</td><td>~1328</td><td>~98 ✅</td><td>轻食日</td></tr>
+  <tr><td>日均</td><td>—</td><td>~1283</td><td>~86</td><td>—</td></tr>
+</table>
+<div class="warn-box" style="margin-top:14px;">
+  <strong>⚠️ 日均热量 ~1283 kcal，低于 1700-1900 目标；蛋白日均 ~86g，低于 90-110g 目标。</strong><br>
+  建议：① 馒头增至 1.5-2 个 ② 米饭增至大半碗 ③ 每日必加一勺蛋白粉 ④ 下午加餐可加蛋糕。
+</div>
+
+<!-- 建议 -->
+<div class="advice-section">
+  <div class="section-title">关键建议</div>
+
+  <div class="advice-card">
+    <div class="rank">🥇 分离乳清蛋白粉</div>
+    <p>乳糖含量 &lt;0.1g/份，几乎无味。每天 1-2 勺（25-50g 蛋白），冲水或加豆浆。这是弥补蛋白缺口最高效的方式。</p>
+  </div>
+  <div class="advice-card">
+    <div class="rank">🥈 豆制品轮换</div>
+    <p>豆腐→豆干→豆腐皮→腐竹→素鸡，每周轮换。不同豆制品口感差异大，蛋白质含量从 8%（嫩豆腐）到 18%（腐竹）不等。</p>
+  </div>
+  <div class="advice-card">
+    <div class="rank">🥉 鱼类轮换</div>
+    <p>龙利鱼→鲈鱼→鲳鱼→黄花鱼，每周轮换。四种鱼都是刺少、肉嫩、易消化，清蒸或做汤都行。</p>
+  </div>
+  <div class="advice-card">
+    <div class="rank">🍰 甜品怎么吃</div>
+    <p>慕斯、芝士、提拉米苏、抹茶、红丝绒、榴莲、布丁、法式奶油——安排在上午 10 点或下午 3 点，每次 1 小块（~180 kcal）。芝士蛋糕和提拉米苏乳糖含量极低，乳糖不耐受的人通常可以耐受。</p>
+  </div>
+  <div class="advice-card">
+    <div class="rank">🧊 肠胃保护原则</div>
+    <p>① 不吃酸（醋、柠檬、番茄酱）② 不吃辣（辣椒、辣酱、豆瓣酱）③ 软烂为主（冬瓜煮软、青菜烫软、肉切小丁）④ 少食多餐 ⑤ 常温饮食，西瓜从冰箱拿出来放 10 分钟再吃。</p>
+  </div>
+</div>
+
+<footer>
+  Minis · 30 岁健身女性一周食谱（四国料理版）<br>
+  基于个人口味和肠胃限制设计 · 所有数字为估算值
+</footer>
+
+</body>
+</html>
