@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>幼儿园大班一周早餐计划</title>
+<style>
+  /* ===== 基础重置 ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background: linear-gradient(135deg, #fef9f0 0%, #fef3e7 50%, #fdeee4 100%);
+    color: #3d3226;
+    line-height: 1.7;
+    padding: 20px 12px 60px;
+    min-height: 100vh;
+  }
+
+  /* ===== 顶部标题区 ===== */
+  .hero {
+    text-align: center;
+    padding: 40px 16px 30px;
+    background: linear-gradient(135deg, #ff9a56 0%, #ff6b9d 50%, #c471f5 100%);
+    border-radius: 24px;
+    color: #fff;
+    margin-bottom: 32px;
+    box-shadow: 0 12px 40px rgba(255,107,157,0.25);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: "🍳🥛🥕🍓🍌";
+    position: absolute;
+    top: 10px; left: 0; right: 0;
+    font-size: 1.8rem;
+    opacity: 0.3;
+    letter-spacing: 8px;
+  }
+  .hero h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .hero .subtitle {
+    font-size: 1rem;
+    opacity: 0.9;
+    font-weight: 500;
+    position: relative;
+  }
+  .hero .meta {
+    margin-top: 14px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+  }
+  .hero .tag {
+    background: rgba(255,255,255,0.25);
+    backdrop-filter: blur(4px);
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+
+  /* ===== 营养基准卡片 ===== */
+  .baseline-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 24px 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+    border: 1px solid #f0e6d8;
+  }
+  .baseline-card h2 {
+    font-size: 1.25rem;
+    color: #e8703b;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .baseline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+  }
+  .baseline-item {
+    background: #fef9f0;
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-align: center;
+  }
+  .baseline-item .label {
+    font-size: 0.75rem;
+    color: #a09080;
+    margin-bottom: 4px;
+  }
+  .baseline-item .value {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #e8703b;
+  }
+  .baseline-item .target {
+    font-size: 0.78rem;
+    color: #c0b0a0;
+    margin-top: 2px;
+  }
+
+  /* ===== 一周早餐卡片 ===== */
+  .day-card {
+    background: #fff;
+    border-radius: 20px;
+    padding: 24px 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    border: 1px solid #f0e6d8;
+    transition: transform 0.2s, box-shadow 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .day-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  }
+  .day-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+    padding-bottom: 14px;
+    border-bottom: 2px dashed #f0e6d8;
+  }
+  .day-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  .day-title {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #3d3226;
+  }
+  .day-subtitle {
+    font-size: 0.85rem;
+    color: #e8703b;
+    font-weight: 600;
+    margin-top: 2px;
+  }
+  .day-meta {
+    margin-left: auto;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .day-meta .kcal {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #ff6b6b;
+  }
+  .day-meta .prot {
+    font-size: 0.8rem;
+    color: #88967a;
+    font-weight: 600;
+  }
+
+  /* 食物表格 */
+  .food-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.92rem;
+  }
+  .food-table th {
+    text-align: left;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #b0a090;
+    padding: 6px 8px;
+    border-bottom: 1px solid #f0e6d8;
+    font-weight: 700;
+  }
+  .food-table td {
+    padding: 8px;
+    border-bottom: 1px solid #f7f1e8;
+    vertical-align: top;
+  }
+  .food-table tr:last-child td {
+    border-bottom: none;
+  }
+  .food-cat {
+    font-weight: 700;
+    font-size: 0.8rem;
+    color: #e8703b;
+    white-space: nowrap;
+  }
+  .food-name {
+    font-weight: 600;
+    color: #3d3226;
+  }
+  .food-name small {
+    font-weight: 400;
+    color: #8a7e6e;
+    font-size: 0.82rem;
+  }
+  .food-emoji {
+    font-size: 1.1rem;
+    margin-right: 4px;
+  }
+
+  /* 营养亮点 */
+  .highlight-box {
+    margin-top: 14px;
+    background: linear-gradient(135deg, #fef9f0, #fff5ec);
+    border-left: 4px solid #ff9a56;
+    border-radius: 0 12px 12px 0;
+    padding: 12px 16px;
+    font-size: 0.88rem;
+    color: #5d4a32;
+  }
+  .highlight-box strong {
+    color: #e8703b;
+  }
+  .prep-box {
+    margin-top: 10px;
+    background: #f5f0e8;
+    border-radius: 10px;
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    color: #7a6e5e;
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .prep-box .prep-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  /* ===== 营养汇总表 ===== */
+  .summary-section {
+    background: #fff;
+    border-radius: 20px;
+    padding: 28px 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    border: 1px solid #f0e6d8;
+  }
+  .summary-section h2 {
+    font-size: 1.25rem;
+    color: #e8703b;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.88rem;
+  }
+  .summary-table th {
+    text-align: left;
+    padding: 10px 8px;
+    border-bottom: 2px solid #f0e6d8;
+    font-weight: 700;
+    color: #5d4a32;
+    font-size: 0.8rem;
+  }
+  .summary-table td {
+    padding: 10px 8px;
+    border-bottom: 1px solid #f7f1e8;
+    color: #5d4a32;
+  }
+  .summary-table tr:last-child td {
+    border-bottom: none;
+    font-weight: 800;
+    background: #fef9f0;
+  }
+  .summary-table .day-label {
+    font-weight: 700;
+    color: #e8703b;
+  }
+
+  /* 营养柱状图 */
+  .chart-container {
+    margin-top: 24px;
+  }
+  .chart-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #5d4a32;
+    margin-bottom: 14px;
+  }
+  .chart-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+    gap: 10px;
+  }
+  .chart-label {
+    width: 70px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: #7a6e5e;
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .chart-bar-wrap {
+    flex: 1;
+    height: 28px;
+    background: #f5f0e8;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+  }
+  .chart-bar {
+    height: 100%;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding-left: 12px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #fff;
+    min-width: 40px;
+    transition: width 0.6s ease;
+  }
+  .bar-cal { background: linear-gradient(90deg, #ff9a56, #ff6b6b); }
+  .bar-prot { background: linear-gradient(90deg, #7ed4ea, #4facfe); }
+  .bar-ca { background: linear-gradient(90deg, #a8e6cf, #56ab97); }
+  .chart-avg {
+    font-size: 0.78rem;
+    color: #b0a090;
+    margin-left: 8px;
+    white-space: nowrap;
+  }
+
+  /* ===== 豆浆说明区 ===== */
+  .soy-section {
+    background: #fff;
+    border-radius: 20px;
+    padding: 28px 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    border: 1px solid #f0e6d8;
+  }
+  .soy-section h2 {
+    font-size: 1.25rem;
+    color: #e8703b;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .soy-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .soy-card {
+    background: #fef9f0;
+    border-radius: 14px;
+    padding: 18px;
+    text-align: center;
+    border: 1px solid #f5ede0;
+  }
+  .soy-card .icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+  }
+  .soy-card .title {
+    font-weight: 700;
+    color: #e8703b;
+    margin-bottom: 6px;
+    font-size: 0.92rem;
+  }
+  .soy-card .desc {
+    font-size: 0.82rem;
+    color: #7a6e5e;
+    line-height: 1.5;
+  }
+  .caution-list {
+    list-style: none;
+    padding: 0;
+  }
+  .caution-list li {
+    padding: 10px 14px;
+    margin-bottom: 8px;
+    background: #fef9f0;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    color: #5d4a32;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border-left: 3px solid #ff9a56;
+  }
+  .caution-list li .ci-icon {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+
+  /* ===== 备餐策略 ===== */
+  .prep-section {
+    background: #fff;
+    border-radius: 20px;
+    padding: 28px 20px;
+    margin-bottom: 28px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.05);
+    border: 1px solid #f0e6d8;
+  }
+  .prep-section h2 {
+    font-size: 1.25rem;
+    color: #e8703b;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .prep-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    margin-bottom: 22px;
+  }
+  .prep-item {
+    background: #fef9f0;
+    border-radius: 14px;
+    padding: 16px;
+    border: 1px solid #f5ede0;
+  }
+  .prep-item .prep-food {
+    font-weight: 700;
+    color: #3d3226;
+    margin-bottom: 6px;
+    font-size: 0.92rem;
+  }
+  .prep-item .prep-detail {
+    font-size: 0.82rem;
+    color: #7a6e5e;
+    line-height: 1.5;
+  }
+  .timeline {
+    background: #f5f0e8;
+    border-radius: 14px;
+    padding: 18px 20px;
+  }
+  .timeline-title {
+    font-weight: 700;
+    color: #5d4a32;
+    margin-bottom: 12px;
+    font-size: 0.92rem;
+  }
+  .timeline-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+    font-size: 0.85rem;
+    color: #5d4a32;
+  }
+  .timeline-item .tl-time {
+    font-weight: 700;
+    color: #e8703b;
+    min-width: 55px;
+    font-size: 0.82rem;
+  }
+  .timeline-item .tl-duration {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: #b0a090;
+    background: #fff;
+    padding: 2px 8px;
+    border-radius: 8px;
+  }
+
+  /* ===== 家长建议 ===== */
+  .tips-section {
+    background: linear-gradient(135deg, #fff5ec, #fef9f0);
+    border-radius: 20px;
+    padding: 28px 20px;
+    margin-bottom: 28px;
+    border: 2px dashed #ff9a56;
+  }
+  .tips-section h2 {
+    font-size: 1.25rem;
+    color: #e8703b;
+    margin-bottom: 18px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .tip-card {
+    background: #fff;
+    border-radius: 14px;
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .tip-card .tip-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ff9a56, #ff6b9d);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .tip-card .tip-text {
+    font-size: 0.9rem;
+    color: #5d4a32;
+    line-height: 1.6;
+  }
+  .tip-card .tip-text strong {
+    color: #e8703b;
+  }
+
+  /* ===== 页脚 ===== */
+  .footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: #b0a090;
+    font-size: 0.82rem;
+    line-height: 1.8;
+  }
+  .footer .heart {
+    color: #ff6b6b;
+    font-size: 1.1rem;
+  }
+
+  /* ===== 打印优化 ===== */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .hero, .day-card, .summary-section, .soy-section, .prep-section, .tips-section {
+      box-shadow: none;
+      break-inside: avoid;
+    }
+    .day-card:hover { transform: none; box-shadow: none; }
+  }
+
+  /* ===== 响应式 ===== */
+  @media (max-width: 600px) {
+    .hero h1 { font-size: 1.5rem; }
+    .day-header { flex-wrap: wrap; }
+    .day-meta { margin-left: 0; text-align: left; }
+    .food-table { font-size: 0.82rem; }
+    .food-table th, .food-table td { padding: 6px 4px; }
+    .chart-row { flex-wrap: wrap; }
+    .chart-label { width: 60px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 顶部标题区 ===== -->
+<header class="hero">
+  <h1>🍳 幼儿园大班一周早餐计划</h1>
+  <p class="subtitle">5-6 岁 · 一周不重样 · 豆浆替代牛奶 · 营养均衡</p>
+  <div class="meta">
+    <span class="tag">📅 7 天不重样</span>
+    <span class="tag">🥛 豆浆替代牛奶</span>
+    <span class="tag">⏱ 每日备餐 ~12 分钟</span>
+    <span class="tag">🥗 蔬菜蛋白碳水均衡</span>
+  </div>
+</header>
+
+<!-- ===== 营养基准速查 ===== -->
+<section class="baseline-card">
+  <h2>📊 营养基准速查（5-6 岁）</h2>
+  <div class="baseline-grid">
+    <div class="baseline-item">
+      <div class="label">🔥 早餐热量</div>
+      <div class="value">350-480 kcal</div>
+      <div class="target">占全天 25-30%</div>
+    </div>
+    <div class="baseline-item">
+      <div class="label">💪 蛋白质</div>
+      <div class="value">13-18 g</div>
+      <div class="target">占全天 25-30%</div>
+    </div>
+    <div class="baseline-item">
+      <div class="label">🦴 钙</div>
+      <div class="value">≥240 mg</div>
+      <div class="target">豆浆需补偿</div>
+    </div>
+    <div class="baseline-item">
+      <div class="label">🩸 铁</div>
+      <div class="value">≥3 mg</div>
+      <div class="target">午餐补红肉/肝</div>
+    </div>
+    <div class="baseline-item">
+      <div class="label">👁 维生素 A</div>
+      <div class="value">125-180 μg RE</div>
+      <div class="target">胡萝卜/西兰花</div>
+    </div>
+    <div class="baseline-item">
+      <div class="label">🍋 维生素 C</div>
+      <div class="value">13-18 mg</div>
+      <div class="target">水果+蔬菜</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 一周早餐卡片 ===== -->
+<!-- 周一 -->
+<section class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#ff9a56,#ff6b6b)">1️⃣</div>
+    <div>
+      <div class="day-title">周一 · 能量启动日</div>
+      <div class="day-subtitle">全麦鸡蛋卷 + 原味豆浆</div>
+    </div>
+    <div class="day-meta">
+      <div class="kcal">~365 kcal</div>
+      <div class="prot">蛋白 ~13g</div>
+    </div>
+  </div>
+  <table class="food-table">
+    <thead><tr><th>类别</th><th>食物</th><th>份量</th><th>热量</th></tr></thead>
+    <tbody>
+      <tr><td class="food-cat">🥢 主食</td><td class="food-name">全麦鸡蛋卷 <small>（全麦粉+鸡蛋，少油煎）</small></td><td>1 个 ~60g</td><td>130 kcal</td></tr>
+      <tr><td class="food-cat">🥚 蛋白质</td><td class="food-name">同上鸡蛋</td><td>1 个全蛋</td><td>—</td></tr>
+      <tr><td class="food-cat">🥬 蔬菜</td><td class="food-name">黄瓜条 / 胡萝卜条</td><td>各 3-4 条</td><td>15 kcal</td></tr>
+      <tr><td class="food-cat">🍓 水果</td><td class="food-name">圣女果</td><td>5-6 颗</td><td>20 kcal</td></tr>
+      <tr><td class="food-cat">🥛 饮品</td><td class="food-name">原味豆浆</td><td>200 ml</td><td>60 kcal</td></tr>
+      <tr><td class="food-cat">坚果</td><td class="food-name">核桃仁</td><td>2 颗 ~6g</td><td>40 kcal</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box">
+    <strong>营养亮点：</strong>鸡蛋提供完整蛋白 + 胆碱（大脑发育关键营养素），全麦提供 B 族维生素和膳食纤维，核桃补 ω-3 脂肪酸。
+  </div>
+  <div class="prep-box">
+    <span class="prep-icon">⏰</span>
+    <span><strong>备餐提示：</strong>面糊可提前一晚调好冷藏，早上 3 分钟煎制出锅。</span>
+  </div>
+</section>
+
+<!-- 周二 -->
+<section class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#56ab97,#a8e6cf)">2️⃣</div>
+    <div>
+      <div class="day-title">周二 · 粗粮健脾日</div>
+      <div class="day-subtitle">燕麦小米粥 + 蒸蛋羹 + 红枣豆浆</div>
+    </div>
+    <div class="day-meta">
+      <div class="kcal">~355 kcal</div>
+      <div class="prot">蛋白 ~12g</div>
+    </div>
+  </div>
+  <table class="food-table">
+    <thead><tr><th>类别</th><th>食物</th><th>份量</th><th>热量</th></tr></thead>
+    <tbody>
+      <tr><td class="food-cat">🥢 主食</td><td class="food-name">燕麦小米粥</td><td>1 碗 ~200g</td><td>120 kcal</td></tr>
+      <tr><td class="food-cat">🥚 蛋白质</td><td class="food-name">蒸蛋羹</td><td>1 碗（鸡蛋+温水 1:1.5）</td><td>75 kcal</td></tr>
+      <tr><td class="food-cat">🥬 蔬菜</td><td class="food-name">菠菜碎（撒蛋羹上同蒸）</td><td>一小撮</td><td>5 kcal</td></tr>
+      <tr><td class="food-cat">🍓 水果</td><td class="food-name">香蕉</td><td>半根 ~60g</td><td>55 kcal</td></tr>
+      <tr><td class="food-cat">🥛 饮品</td><td class="food-name">红枣豆浆</td><td>200 ml</td><td>70 kcal</td></tr>
+      <tr><td class="food-cat">坚果</td><td class="food-name">南瓜子仁</td><td>5g</td><td>30 kcal</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box">
+    <strong>营养亮点：</strong>燕麦 β-葡聚糖调节血脂，小米富含色氨酸（助睡眠），红枣补铁 + 天然甜味替代添加糖。
+  </div>
+  <div class="prep-box">
+    <span class="prep-icon">⏰</span>
+    <span><strong>备餐提示：</strong>燕麦小米可电饭煲预约；蛋羹蒸锅与粥同步进行。</span>
+  </div>
+</section>
+
+<!-- 周三 -->
+<section class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#ffd93d,#ff9a56)">3️⃣</div>
+    <div>
+      <div class="day-title">周三 · 五彩趣味日</div>
+      <div class="day-subtitle">蔬菜鸡蛋饼 + 煮玉米 + 原味豆浆</div>
+    </div>
+    <div class="day-meta">
+      <div class="kcal">~315 kcal</div>
+      <div class="prot">蛋白 ~14g</div>
+    </div>
+  </div>
+  <table class="food-table">
+    <thead><tr><th>类别</th><th>食物</th><th>份量</th><th>热量</th></tr></thead>
+    <tbody>
+      <tr><td class="food-cat">🥢 主食+蛋白</td><td class="food-name">蔬菜鸡蛋饼 <small>（鸡蛋×2 + 胡萝卜碎 + 菠菜碎 + 面粉）</small></td><td>1 张 ~80g</td><td>160 kcal</td></tr>
+      <tr><td class="food-cat">🥢 主食</td><td class="food-name">煮玉米</td><td>半根 ~80g</td><td>45 kcal</td></tr>
+      <tr><td class="food-cat">🍓 水果</td><td class="food-name">苹果片</td><td>1 小碗 ~80g</td><td>40 kcal</td></tr>
+      <tr><td class="food-cat">🥛 饮品</td><td class="food-name">原味豆浆</td><td>200 ml</td><td>60 kcal</td></tr>
+      <tr><td class="food-cat">🍓 水果</td><td class="food-name">蓝莓</td><td>10 颗</td><td>10 kcal</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box">
+    <strong>营养亮点：</strong>胡萝卜 → 维生素 A，菠菜 → 铁 + 叶酸，鸡蛋 → 优质蛋白。红 + 绿 + 黄三色吸引孩子注意力，视觉开胃。
+  </div>
+  <div class="prep-box">
+    <span class="prep-icon">⏰</span>
+    <span><strong>备餐提示：</strong>蔬菜碎可提前切好冷藏；饼 3 分钟出锅。</span>
+  </div>
+</section>
+
+<!-- 周四 -->
+<section class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#c471f5,#ff6b9d)">4️⃣</div>
+    <div>
+      <div class="day-title">周四 · 明目护眼日</div>
+      <div class="day-subtitle">紫薯大米粥 + 清蒸鱼肉丸 + 核桃花生豆浆</div>
+    </div>
+    <div class="day-meta">
+      <div class="kcal">~325 kcal</div>
+      <div class="prot">蛋白 ~12g</div>
+    </div>
+  </div>
+  <table class="food-table">
+    <thead><tr><th>类别</th><th>食物</th><th>份量</th><th>热量</th></tr></thead>
+    <tbody>
+      <tr><td class="food-cat">🥢 主食</td><td class="food-name">紫薯大米粥</td><td>1 碗 ~200g</td><td>110 kcal</td></tr>
+      <tr><td class="food-cat">🐟 蛋白质</td><td class="food-name">清蒸鱼肉丸 <small>（鳕鱼/鲈鱼剁泥 + 姜去腥）</small></td><td>3 个 ~60g</td><td>70 kcal</td></tr>
+      <tr><td class="food-cat">🥬 蔬菜</td><td class="food-name">西兰花（水焯后与鱼丸同蒸）</td><td>3-4 小朵</td><td>10 kcal</td></tr>
+      <tr><td class="food-cat">🍓 水果</td><td class="food-name">橘子</td><td>1 个 ~80g</td><td>35 kcal</td></tr>
+      <tr><td class="food-cat">🥛 饮品</td><td class="food-name">核桃花生豆浆</td><td>200 ml</td><td>85 kcal</td></tr>
+      <tr><td class="food-cat">🍓 水果</td><td class="food-name">蒸苹果片</td><td>2 片</td><td>15 kcal</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box">
+    <strong>营养亮点：</strong>鱼肉 DHA 促进大脑与视力发育，紫薯花青素护眼，西兰花维生素 C 促进铁吸收。
+  </div>
+  <div class="prep-box">
+    <span class="prep-icon">⏰</span>
+    <span><strong>备餐提示：</strong>鱼肉丸可提前一晚做好冷藏；紫薯粥电饭煲预约即可。</span>
+  </div>
+</section>
+
+<!-- 周五 -->
+<section class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#88967a,#56ab97)">5️⃣</div>
+    <div>
+      <div class="day-title">周五 · 开心放飞日</div>
+      <div class="day-subtitle">杂粮小馒头 + 水煮蛋 + 黑豆豆浆</div>
+    </div>
+    <div class="day-meta">
+      <div class="kcal">~325 kcal</div>
+      <div class="prot">蛋白 ~13g</div>
+    </div>
+  </div>
+  <table class="food-table">
+    <thead><tr><th>类别</th><th>食物</th><th>份量</th><th>热量</th></tr></thead>
+    <tbody>
+      <tr><td class="food-cat">🥢 主食</td><td class="food-name">杂粮小馒头 <small>（全麦+玉米面+小米面）</small></td><td>2 个 ~60g</td><td>100 kcal</td></tr>
+      <tr><td class="food-cat">🥚 蛋白质</td><td class="food-name">水煮蛋</td><td>1 个 ~50g</td><td>75 kcal</td></tr>
+      <tr><td class="food-cat">🥬 蔬菜</td><td class="food-name">凉拌黄瓜 <small>（盐 + 香油）</small></td><td>1 小碗 ~50g</td><td>10 kcal</td></tr>
+      <tr><td class="food-cat">🍓 水果</td><td class="food-name">火龙果</td><td>1/4 个 ~80g</td><td>40 kcal</td></tr>
+      <tr><td class="food-cat">🥛 饮品</td><td class="food-name">黑豆豆浆</td><td>200 ml</td><td>70 kcal</td></tr>
+      <tr><td class="food-cat">钙补充</td><td class="food-name">芝麻酱抹黄瓜（可选）</td><td>5g</td><td>30 kcal</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box">
+    <strong>营养亮点：</strong>杂粮互补氨基酸提升蛋白质量，黑豆补肾益气，火龙果通便，芝麻酱是天然高钙食材（~1170mg/100g）。
+  </div>
+  <div class="prep-box">
+    <span class="prep-icon">⏰</span>
+    <span><strong>备餐提示：</strong>杂粮馒头可周末批量蒸好冷冻，早上蒸锅复热 5 分钟即可。</span>
+  </div>
+</section>
+
+<!-- 周六 -->
+<section class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#ff6b9d,#c471f5)">6️⃣</div>
+    <div>
+      <div class="day-title">周六 · DIY 亲子日</div>
+      <div class="day-subtitle">全麦吐司三明治 + 水果豆浆奶昔</div>
+    </div>
+    <div class="day-meta">
+      <div class="kcal">~340 kcal</div>
+      <div class="prot">蛋白 ~15g</div>
+    </div>
+  </div>
+  <table class="food-table">
+    <thead><tr><th>类别</th><th>食物</th><th>份量</th><th>热量</th></tr></thead>
+    <tbody>
+      <tr><td class="food-cat">🥢 主食+蛋白</td><td class="food-name">全麦吐司三明治 <small>（全麦吐司×2 + 煎蛋 + 番茄片 + 生菜）</small></td><td>1 个</td><td>200 kcal</td></tr>
+      <tr><td class="food-cat">🍓 水果</td><td class="food-name">蓝莓</td><td>1 小盒 ~50g</td><td>25 kcal</td></tr>
+      <tr><td class="food-cat">🥛 饮品</td><td class="food-name">水果豆浆奶昔 <small>（豆浆 150ml + 香蕉半根 + 草莓 2 颗）</small></td><td>1 杯</td><td>100 kcal</td></tr>
+      <tr><td class="food-cat">🍓 水果</td><td class="food-name">圣女果</td><td>5 颗</td><td>15 kcal</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box">
+    <strong>营养亮点：</strong>三明治可让孩子自己参与组装（安全食材），培养动手能力；奶昔将水果 + 蛋白二合一，喝着吃果子。
+  </div>
+  <div class="prep-box">
+    <span class="prep-icon">⏰</span>
+    <span><strong>备餐提示：</strong>吐司提前切好，蛋煎好，组装仅需 2 分钟。</span>
+  </div>
+</section>
+
+<!-- 周日 -->
+<section class="day-card">
+  <div class="day-header">
+    <div class="day-icon" style="background:linear-gradient(135deg,#ff9a56,#ffd93d)">7️⃣</div>
+    <div>
+      <div class="day-title">周日 · 慢养胃日</div>
+      <div class="day-subtitle">鸡肉蔬菜粥 + 蒸苹果 + 原味豆浆</div>
+    </div>
+    <div class="day-meta">
+      <div class="kcal">~345 kcal</div>
+      <div class="prot">蛋白 ~16g</div>
+    </div>
+  </div>
+  <table class="food-table">
+    <thead><tr><th>类别</th><th>食物</th><th>份量</th><th>热量</th></tr></thead>
+    <tbody>
+      <tr><td class="food-cat">🥢 主食+蛋白</td><td class="food-name">鸡肉蔬菜粥 <small>（鸡胸肉碎 + 胡萝卜丁 + 玉米粒 + 青菜碎 + 大米）</small></td><td>1 碗 ~250g</td><td>180 kcal</td></tr>
+      <tr><td class="food-cat">🍓 水果</td><td class="food-name">蒸苹果</td><td>1/4 个</td><td>30 kcal</td></tr>
+      <tr><td class="food-cat">🥛 饮品</td><td class="food-name">原味豆浆</td><td>200 ml</td><td>60 kcal</td></tr>
+      <tr><td class="food-cat">🥚 蛋白质</td><td class="food-name">水煮蛋（可选）</td><td>1 个</td><td>75 kcal</td></tr>
+    </tbody>
+  </table>
+  <div class="highlight-box">
+    <strong>营养亮点：</strong>粥品养胃适合周日慢节奏，鸡胸肉低脂高蛋白，蒸苹果温性不刺激肠胃。
+  </div>
+  <div class="prep-box">
+    <span class="prep-icon">⏰</span>
+    <span><strong>备餐提示：</strong>粥可电饭煲预约，鸡肉碎提前腌制即可。</span>
+  </div>
+</section>
+
+<!-- ===== 营养汇总 ===== -->
+<section class="summary-section">
+  <h2>📈 一周营养汇总</h2>
+  <table class="summary-table">
+    <thead>
+      <tr><th>日期</th><th>🔥 热量</th><th>💪 蛋白质</th><th>🦴 钙</th><th>🩸 铁</th><th>特色食材</th></tr>
+    </thead>
+    <tbody>
+      <tr><td class="day-label">周一</td><td>~365 kcal</td><td>~13g</td><td>~180mg</td><td>~1.5mg</td><td>鸡蛋·全麦·核桃</td></tr>
+      <tr><td class="day-label">周二</td><td>~355 kcal</td><td>~12g</td><td>~200mg</td><td>~2.5mg</td><td>燕麦·小米·红枣</td></tr>
+      <tr><td class="day-label">周三</td><td>~315 kcal</td><td>~14g</td><td>~120mg</td><td>~2.0mg</td><td>胡萝卜·菠菜·玉米</td></tr>
+      <tr><td class="day-label">周四</td><td>~325 kcal</td><td>~12g</td><td>~210mg</td><td>~1.5mg</td><td>鳕鱼·紫薯·西兰花</td></tr>
+      <tr><td class="day-label">周五</td><td>~325 kcal</td><td>~13g</td><td>~280mg</td><td>~2.0mg</td><td>黑豆·杂粮·芝麻</td></tr>
+      <tr><td class="day-label">周六</td><td>~340 kcal</td><td>~15g</td><td>~150mg</td><td>~1.5mg</td><td>全麦吐司·香蕉·草莓</td></tr>
+      <tr><td class="day-label">周日</td><td>~345 kcal</td><td>~16g</td><td>~120mg</td><td>~1.5mg</td><td>鸡胸肉·胡萝卜·青菜</td></tr>
+      <tr><td class="day-label">日均</td><td>~339 kcal</td><td>~13.6g</td><td>~181mg</td><td>~1.8mg</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="chart-container">
+    <div class="chart-title">📊 一周热量 & 蛋白质趋势</div>
+
+    <div class="chart-row">
+      <div class="chart-label">🔥 热量</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar bar-cal" style="width:76%">365</div>
+      </div>
+      <div class="chart-avg">日均 ~339 kcal</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">💪 蛋白</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar bar-prot" style="width:72%">13.6g</div>
+      </div>
+      <div class="chart-avg">目标 13-18g ✅</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">🦴 钙</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar bar-ca" style="width:60%">181mg</div>
+      </div>
+      <div class="chart-avg">目标 ≥240mg ⚠️</div>
+    </div>
+    <div class="chart-row">
+      <div class="chart-label">🩸 铁</div>
+      <div class="chart-bar-wrap">
+        <div class="chart-bar bar-prot" style="width:60%">1.8mg</div>
+      </div>
+      <div class="chart-avg">目标 ≥3mg ⚠️</div>
+    </div>
+  </div>
+  <p style="font-size:0.8rem;color:#b0a090;margin-top:16px;line-height:1.6">
+    ⚠️ 钙和铁的日均值略低于目标，建议：① 使用钙强化豆浆（包装标注"高钙"）；② 午餐安排红肉/动物肝脏/豆腐补铁。
+  </p>
+</section>
+
+<!-- ===== 豆浆说明 ===== -->
+<section class="soy-section">
+  <h2>🥛 豆浆替代牛奶：全面说明</h2>
+
+  <div class="soy-grid">
+    <div class="soy-card">
+      <div class="icon">⚖️</div>
+      <div class="title">蛋白质持平</div>
+      <div class="desc">豆浆 ~3g/100ml vs 牛奶 ~3g/100ml，两者蛋白质含量相当。</div>
+    </div>
+    <div class="soy-card">
+      <div class="icon">🚫</div>
+      <div class="title">零乳糖</div>
+      <div class="desc">不含乳糖，乳糖不耐受儿童友好，不会腹胀腹泻。</div>
+    </div>
+    <div class="soy-card">
+      <div class="icon">⚠️</div>
+      <div class="title">钙含量低</div>
+      <div class="desc">豆浆 ~15-30mg/100ml，仅为牛奶的 1/4~1/6，必须通过饮食补偿。</div>
+    </div>
+    <div class="soy-card">
+      <div class="icon">🌿</div>
+      <div class="title">植物雌激素</div>
+      <div class="desc">含大豆异黄酮，适量饮用（150-200ml/日）安全，不干扰儿童发育。</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:1rem;color:#e8703b;margin:24px 0 14px">🦴 钙补偿策略（关键！）</h3>
+  <div class="soy-grid">
+    <div class="soy-card">
+      <div class="icon">🫙</div>
+      <div class="title">芝麻酱</div>
+      <div class="desc">~1170mg/100g → 周五凉拌黄瓜淋油</div>
+    </div>
+    <div class="soy-card">
+      <div class="icon">-chat</div>
+      <div class="title">核桃仁</div>
+      <div class="desc">~98mg/100g → 周一加餐</div>
+    </div>
+    <div class="soy-card">
+      <div class="icon">🥬</div>
+      <div class="title">深绿叶菜</div>
+      <div class="desc">~100-200mg/100g → 周二菠菜、周三菠菜</div>
+    </div>
+    <div class="soy-card">
+      <div class="icon">🐟</div>
+      <div class="title">小鱼连骨</div>
+      <div class="desc">~500mg/100g → 周四鱼丸（若用小鱼）</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:1rem;color:#e8703b;margin:24px 0 14px">⚠️ 饮用注意事项</h3>
+  <ul class="caution-list">
+    <li><span class="ci-icon">🔥</span><span><strong>必须煮沸：</strong>生豆浆含胰蛋白酶抑制剂，煮沸 5 分钟以上方可饮用。</span></li>
+    <li><span class="ci-icon">📏</span><span><strong>不过量：</strong>儿童每日 150-200ml 为宜，避免胀气。</span></li>
+    <li><span class="ci-icon">🍞</span><span><strong>不空腹大量喝：</strong>搭配主食同食，提高蛋白利用率。</span></li>
+    <li><span class="ci-icon">✅</span><span><strong>首选钙强化豆浆：</strong>包装标注"高钙"的豆浆钙含量可达 120-150mg/100ml，与牛奶接近。</span></li>
+  </ul>
+</section>
+
+<!-- ===== 备餐策略 ===== -->
+<section class="prep-section">
+  <h2>👨‍🍳 一周备餐策略</h2>
+
+  <h3 style="font-size:1rem;color:#5d4a32;margin-bottom:14px">📦 周末预处理清单</h3>
+  <div class="prep-grid">
+    <div class="prep-item">
+      <div class="prep-food">杂粮馒头</div>
+      <div class="prep-detail">周末蒸 6-8 个 → 冷冻，早上蒸锅复热 5 分钟</div>
+    </div>
+    <div class="prep-item">
+      <div class="prep-food">鱼肉丸</div>
+      <div class="prep-detail">鳕鱼剁泥调味捏丸 → 冷冻，早上蒸 8 分钟</div>
+    </div>
+    <div class="prep-item">
+      <div class="prep-food">蔬菜碎</div>
+      <div class="prep-detail">胡萝卜/菠菜/西兰花切好分装 → 冷藏 2-3 天</div>
+    </div>
+    <div class="prep-item">
+      <div class="prep-food">全麦鸡蛋饼面糊</div>
+      <div class="prep-detail">调好冷藏 → 冷藏 1 晚，早上 3 分钟煎制</div>
+    </div>
+    <div class="prep-item">
+      <div class="prep-food">煮玉米</div>
+      <div class="prep-detail">周末煮好 → 冷藏，早上微波 1 分钟</div>
+    </div>
+    <div class="prep-item">
+      <div class="prep-food">坚果分装</div>
+      <div class="prep-detail">核桃仁/南瓜子称重装小袋 → 常温</div>
+    </div>
+  </div>
+
+  <h3 style="font-size:1rem;color:#5d4a32;margin:24px 0 14px">⏱ 晨间时间线（7:00 起床为例）</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <span class="tl-time">7:00</span>
+      <span>电饭煲预约粥/豆浆启动</span>
+      <span class="tl-duration">1 min</span>
+    </div>
+    <div class="timeline-item">
+      <span class="tl-time">7:05</span>
+      <span>鱼肉丸/馒头等冷冻品入蒸锅</span>
+      <span class="tl-duration">1 min</span>
+    </div>
+    <div class="timeline-item">
+      <span class="tl-time">7:06-7:10</span>
+      <span>煎蛋饼 / 组装三明治</span>
+      <span class="tl-duration">4 min</span>
+    </div>
+    <div class="timeline-item">
+      <span class="tl-time">7:10</span>
+      <span>装盘、摆水果</span>
+      <span class="tl-duration">2 min</span>
+    </div>
+    <div class="timeline-item">
+      <span class="tl-time">7:12</span>
+      <span>🍽 开餐！</span>
+      <span class="tl-duration">—</span>
+    </div>
+  </div>
+  <p style="font-size:0.8rem;color:#b0a090;margin-top:14px">
+    总耗时约 12 分钟（不含煮粥/豆浆时间，可提前预约）。
+  </p>
+</section>
+
+<!-- ===== 家长建议 ===== -->
+<section class="tips-section">
+  <h2>💡 给家长的三条建议</h2>
+
+  <div class="tip-card">
+    <div class="tip-num">1</div>
+    <div class="tip-text">
+      <strong>周六让孩子参与三明治组装。</strong>全麦吐司、生菜叶、番茄片、煎蛋都是安全食材，让他自己摆盘——对早餐的期待感会完全不同。
+    </div>
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-num">2</div>
+    <div class="tip-text">
+      <strong>周五的"开心放飞日"是故意设计的。</strong>杂粮馒头 + 水煮蛋 + 黄瓜 + 火龙果，简单但营养全面。周五不需要复杂——孩子也快放假了。
+    </div>
+  </div>
+
+  <div class="tip-card">
+    <div class="tip-num">3</div>
+    <div class="tip-text">
+      <strong>孩子挑食？用"藏"的。</strong>周三的蔬菜鸡蛋饼——胡萝卜和菠菜剁碎混进蛋饼，多数孩子吃不出来。周日的鸡肉蔬菜粥同理。硬塞不如藏起来。
+    </div>
+  </div>
+</section>
+
+<!-- ===== 页脚 ===== -->
+<footer class="footer">
+  <p>本计划基于《中国居民膳食指南（2022）》学龄前儿童建议量设计</p>
+  <p style="margin-top:6px">所有数字为估算值，实际摄入因食材重量、烹饪方式略有浮动</p>
+  <p style="margin-top:14px"><span class="heart">❤</span> 为孩子做一顿好早餐 <span class="heart">❤</span></p>
+</footer>
+
+</body>
+</html>
